@@ -31,9 +31,9 @@ class AggregateRootRepository
 
     public function retrieve(string $aggregateRootId): AggregateRootInterface
     {
-        $events = $this->eventStore->retrieve($aggregateRootId);
+        $aggregateRoot = $this->factory->create($aggregateRootId);
 
-        return $this->factory->create($aggregateRootId)->reconstituteFromEvents($events);
+        return $aggregateRoot->reconstituteFromEvents($this->eventStore->retrieve($aggregateRootId));
     }
 
     public function persist(AggregateRootInterface $aggregateRoot): void
