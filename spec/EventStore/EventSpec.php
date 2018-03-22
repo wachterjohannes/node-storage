@@ -8,18 +8,18 @@ use PhpSpec\ObjectBehavior;
 
 class EventSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         AggregateRootId $aggregateRootId
     ) {
         $this->beConstructedWith($aggregateRootId);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(Event::class);
     }
 
-    function it_should_return_aggregate_root(
+    public function it_should_return_aggregate_root(
         AggregateRootId $aggregateRootId
     ) {
         $this->getAggregateRootId()->shouldBe($aggregateRootId);

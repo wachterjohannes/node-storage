@@ -12,22 +12,22 @@ use PhpSpec\ObjectBehavior;
 
 class AggregateRootRepositorySpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         AggregateRootFactoryInterface $factory,
         EventStoreInterface $eventStore,
         AggregateRootId $aggregateRootId
     ) {
         $aggregateRootId->__toString()->willReturn('123-123-123');
-        
+
         $this->beConstructedWith($factory, $eventStore);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(AggregateRootRepository::class);
     }
 
-    function it_should_use_factory_to_create_instance(
+    public function it_should_use_factory_to_create_instance(
         AggregateRootFactoryInterface $factory,
         AggregateRootInterface $object,
         AggregateRootId $aggregateRootId
@@ -37,7 +37,7 @@ class AggregateRootRepositorySpec extends ObjectBehavior
         $this->create($aggregateRootId)->shouldBe($object);
     }
 
-    function it_should_reapply_previous_events_on_retrieve(
+    public function it_should_reapply_previous_events_on_retrieve(
         AggregateRootFactoryInterface $factory,
         EventStoreInterface $eventStore,
         AggregateRootInterface $object,
@@ -54,7 +54,7 @@ class AggregateRootRepositorySpec extends ObjectBehavior
         $this->retrieve($aggregateRootId)->shouldBe($object);
     }
 
-    function it_should_persist_all_events_on_new_aggregate_roots(
+    public function it_should_persist_all_events_on_new_aggregate_roots(
         EventStoreInterface $eventStore,
         AggregateRootInterface $object,
         Event $event1,

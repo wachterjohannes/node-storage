@@ -7,17 +7,17 @@ use PhpSpec\ObjectBehavior;
 
 class AggregateRootIdSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
         $this->beConstructedWith('123-123-123');
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(AggregateRootId::class);
     }
 
-    function it_should_return_string_value()
+    public function it_should_return_string_value()
     {
         $this->__toString()->shouldBe('123-123-123');
     }
