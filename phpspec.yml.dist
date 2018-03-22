@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Asapo\NodeStorage
+        psr4_prefix: Asapo\NodeStorage

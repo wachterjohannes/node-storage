@@ -1,0 +1,8 @@
+# IntelliJ
+.idea
+*.iml
+
+# Composer
+/bin/
+/vendor/
+composer.lock
