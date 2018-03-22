@@ -45,11 +45,12 @@ class AggregateRootRepositorySpec extends ObjectBehavior
         Event $event2,
         AggregateRootId $aggregateRootId
     ) {
-        $factory->create($aggregateRootId)->shouldBeCalled()->willReturn($object);
 
         $events = [$event1, $event2];
         $eventStore->retrieve($aggregateRootId)->willReturn($events);
-        $object->reconstituteFromEvents($events)->willReturn($object);
+
+        $factory->create($aggregateRootId)->shouldBeCalled()->willReturn($object);
+        $object->reconstituteFromEvents($events)->shouldBeCalled()->willReturn($object);
 
         $this->retrieve($aggregateRootId)->shouldBe($object);
     }
